@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="logo">
+      <img src="../../../assets/fpd-logo-naked.png" alt="Flower Power Dispensers Logo">
+    </div>
+  
+    <button class="hamburger" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  
+    <ul class="menu" [ngClass]="{'active': menuOpen}">
+      <li (click)="closeMenu()">Shop Now</li>
+      <li (click)="closeMenu()">Brands</li>
+      <li (click)="closeMenu()">About</li>
+      <li (click)="closeMenu()">Events</li>
+      <li (click)="closeMenu()">Contact</li>
+    </ul>
+  
+    <div class="search-cart">
+      <input type="text" placeholder="Search Products">
+      <i class="fas fa-search"></i>
+      <button class="cart"><i class="fas fa-cart-shopping"></i></button>
+    </div>
+  </nav>

@@ -1,0 +1,35 @@
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #F8F5E4;
+    padding: 15px 0; // Thicker banner
+    position: relative;
+    white-space: nowrap;
+    display: flex;
+  }
+  
+  .marquee {
+    display: flex;
+    gap: 50px; // Space between messages
+    font-size: 20px;
+    font-weight: bold;
+    color: #b9985d;
+    text-transform: uppercase;
+    min-width: 200%; // Ensures enough text to loop smoothly
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  .marquee span {
+    display: inline-block;
+    padding-right: 50px; // Space between repeated text
+    min-width: 100%; // Ensures smooth loop
+  }
+  
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }

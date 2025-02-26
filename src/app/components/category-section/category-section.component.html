@@ -1,0 +1,17 @@
+<div class="category-section">
+  <h2 class="section-title">Explore Our Categories</h2>
+
+  <!-- Carousel Wrapper -->
+  <div class="category-carousel">
+    <div 
+      *ngFor="let category of categories" 
+      class="category-card"
+    >
+      <img [src]="category.image" [alt]="category.name" class="category-image">
+      <div class="category-info">
+        <h3 class="category-name">{{ category.name }}</h3>
+        <button class="view-button">View Items</button>
+      </div>
+    </div>
+  </div>
+</div>

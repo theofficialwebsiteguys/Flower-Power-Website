@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// 🌿 Global Color Variables
+
+// Primary Colors
+$primary-color: #2F4F2F;  // Dark green
+$secondary-color: #2F4F2F;  // Light green
+
+// Accent Colors
+$accent-color: #B52C2C; // Dark red for contrast
+$highlight-color: #F8F5E4; // Creamy background
+
+// Neutral Colors
+$black: #1A1A1A;
+$white: #FFFFFF;
+$gray-light: #EAEAEA;
+$gray-dark: #757575;
+
+// Global Styles
+body {
+    font-family: "Kaushan Script", serif;
+    font-weight: 400;
+    font-style: normal;
+  background-color: $highlight-color;
+  color: $black;
+  margin: 0;
+}
+
+// Utility Classes
+.text-primary {
+  color: $primary-color !important;
+}
+
+.text-secondary {
+  color: $secondary-color !important;
+}
+
+.text-accent {
+  color: $accent-color !important;
+}
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-color !important;
+}
+
+.bg-accent {
+  background-color: $accent-color !important;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: $white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary-color;
+  color: $black;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    background-color: $secondary-color;
+  }
+}

@@ -1,0 +1,75 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #F8F5E4;
+    position: relative;
+  
+    .logo img {
+      width: 100px;
+    }
+  
+    .menu {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      font-size: 22px;
+    }
+  
+    .search-cart {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    input {
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+  
+    .cart {
+      background: none;
+      border: none;
+      font-size: 20px;
+    }
+  
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #F8F5E4;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        display: none;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+  
+      .menu.active {
+        display: flex;
+      }
+  
+      .hamburger {
+        display: block;
+      }
+  
+      .search-cart {
+        display: none;
+      }
+    }
+  }
