@@ -10,6 +10,8 @@
     align-items: flex-start;
     gap: 40px;
     position: relative; /* Needed for absolute positioning on mobile */
+    display: flex;
+    flex-direction: row;
   }
 
 

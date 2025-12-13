@@ -1,11 +1,12 @@
 .footer {
   background-color: #ffffff; /* Soft warm background */
-  padding: 50px;
+  // padding: 50px;
   font-family: "Roboto", serif;
   color: #3d3d3d;
 }
 
 .footer-container {
+  padding: 50px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -137,16 +138,39 @@ li {
   background-color: #2e563e;
 }
 
+.footer-licenses {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-licenses p {
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.license-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.license-list li {
+  margin-bottom: 0.25rem;
+}
+
+
+
+
 /* Legal & Compliance Section */
 .footer-legal {
-  max-width: 1200px;
   margin: 30px auto 0;
   text-align: center;
   font-size: 16px;
   color: #555;
   line-height: 1.5;
-  padding-top: 15px;
+  padding: 15px;
   border-top: 1px solid #ddd;
+  background: #fffb00;
 }
 
 .footer-legal a {

@@ -15,8 +15,20 @@ import { AppDownloadComponent } from './components/app-download/app-download.com
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'shop', component: ShopComponent },
-    { path: 'shop/:id', component: SingleProductComponent },
+    // { path: 'shop', component: ShopComponent },
+    // { path: 'shop/:id', component: SingleProductComponent },
+    {
+  path: 'shop',
+  children: [
+    { path: '', component: ShopComponent },                     // /shop
+    { path: ':category', component: ShopComponent },            // /shop/flower
+    { path: ':category/:brand', component: ShopComponent },     // /shop/flower/aeterna (brand filter)
+    { 
+      path: ':category/:brand/:slug', 
+      component: SingleProductComponent 
+    } // /shop/flower/aeterna/product-slug
+  ]
+},
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'login', component: LoginComponent },

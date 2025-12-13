@@ -10,7 +10,7 @@
     <!-- Desktop overlay text -->
     <div class="banner-text banner-text-overlay">
       <div class="headline">NEW STORE. SECOND LOCATION.</div>
-      <div class="subheadline">Opening in Maspeth, Queens this Summer!</div>
+      <div class="subheadline">Opening in Maspeth, Queens this Fall!</div>
     </div>
   </div>
 <section class="dispensary-container" aria-labelledby="business-details-heading">
@@ -78,12 +78,6 @@
   
   <!-- Map Section -->
   <div id="mapWrapper" class="map-section" aria-label="Map showing the location of Flower Power Dispensers">
-    <google-map
-      width="100%"
-      height="100%"
-      [center]="{lat: latitude, lng: longitude}"
-      [zoom]="zoom">
-      <map-marker [position]="{lat: latitude, lng: longitude}" title="Cannabis Dispensary"></map-marker>
-    </google-map>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.3550860485566!2d-73.9799152!3d40.772669799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259262632ec69%3A0x9955e395ded03b45!2sFlower%20Power%20Dispensers!5e1!3m2!1sen!2sus!4v1764476124774!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>

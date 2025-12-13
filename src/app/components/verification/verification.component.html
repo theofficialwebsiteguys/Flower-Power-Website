@@ -1,11 +1,16 @@
 <div class="age-verification-overlay" *ngIf="showAgeVerification">
-    <div class="age-verification-box">
-        <img style="width: 200px;" src="assets/fpd-logo.jpg" alt="">
+  <div class="age-verification-box">
+    <ng-container *ngIf="!showLocationSelection; else locationStep">
+      <img style="width: 200px;" src="assets/fpd-logo.jpg" alt="">
       <p class="verification-text">Are you 21 years old or older?</p>
       <div class="button-group">
         <button (click)="onYesClick()" class="yes-btn">Yes</button>
         <button (click)="onNoClick()" class="no-btn">No</button>
       </div>
-    </div>
+    </ng-container>
+
+    <ng-template #locationStep>
+      <lib-location-selection (locationChosen)="onLocationChosen($event)"></lib-location-selection>
+    </ng-template>
   </div>
-  
+</div>
