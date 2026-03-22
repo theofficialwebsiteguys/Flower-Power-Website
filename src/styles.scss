@@ -1,116 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
 @use "sass:color";
 
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* =========================================
+   SCSS VARIABLES (SAFE, COMPILE-TIME ONLY)
+========================================= */
 
-// 🌿 Global Color Variables
+$primary-color: #2F4F2F;
+$secondary-color: #2F4F2F;
+$accent-color: #B52C2C;
+$highlight-color: #F8F5E4;
 
-// Primary Colors
-$primary-color: #2F4F2F;  // Dark green
-$secondary-color: #2F4F2F;  // Light green
-
-// Accent Colors
-$accent-color: #B52C2C; // Dark red for contrast
-$highlight-color: #F8F5E4; // Creamy background
-
-// Neutral Colors
 $black: #1A1A1A;
 $white: #FFFFFF;
 $gray-light: #EAEAEA;
 $gray-dark: #757575;
 
+/* =========================================
+   SAFE GLOBAL UTILITIES
+========================================= */
+
+body{
+  margin: 0;
+}
+
 .no-scroll {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-}
-
-
-// Global Styles
-body {
-  h1, h2, li{
-    font-family: "Kaushan Script", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  font-family: "Roboto", serif;
-  background-color: $highlight-color;
-  color: $black;
-  margin: 0;
-}
-
-// Utility Classes
-.text-primary {
-  color: $primary-color !important;
-}
-
-.text-secondary {
-  color: $secondary-color !important;
-}
-
-.text-accent {
-  color: $accent-color !important;
-}
-
-.bg-primary {
-  background-color: $primary-color !important;
-}
-
-.bg-secondary {
-  background-color: $secondary-color !important;
-}
-
-.bg-accent {
-  background-color: $accent-color !important;
-}
-
-.btn-primary {
-  background-color: $primary-color;
-  color: $white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  
-  &:hover {
-    background-color: color.adjust($primary-color, $lightness: -10%);
-  }
-}
-
-.btn-secondary {
-  background-color: $secondary-color;
-  color: $black;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: none;
-  transition: all 0.3s ease-in-out;
-  
-  &:hover {
-    background-color: $secondary-color;
-  }
-}
-
-button {
-  background-color: #25463D; /* Green */
-  color: white; /* White Text */
-  border: none;
-  padding: 5px 10px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 8px; /* Rounded */
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-}
-
-button:hover {
-  background-color: #1e3b32; /* Darker Green on Hover */
-}
-
-button:disabled {
-  background-color: #A8B5A3; /* Muted Green for Disabled */
-  cursor: not-allowed;
 }
 
 .visually-hidden {
@@ -120,6 +35,77 @@ button:disabled {
   margin: -1px;
   padding: 0;
   border: 0;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+/* =========================================
+   WEBSITE-ONLY STYLES
+========================================= */
+
+.website-root {
+  font-family: "Roboto", serif;
+  background-color: $highlight-color;
+  color: $black;
+  min-height: 100vh;
+
+  h1,
+  h2,
+  li {
+    font-family: "Kaushan Script", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Buttons */
+  button {
+    background-color: #25463D;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #1e3b32;
+    }
+
+    &:disabled {
+      background-color: #A8B5A3;
+      cursor: not-allowed;
+    }
+  }
+
+  /* Utility classes */
+  .text-primary { color: $primary-color !important; }
+  .text-secondary { color: $secondary-color !important; }
+  .text-accent { color: $accent-color !important; }
+
+  .bg-primary { background-color: $primary-color !important; }
+  .bg-secondary { background-color: $secondary-color !important; }
+  .bg-accent { background-color: $accent-color !important; }
+
+  .btn-primary {
+    background-color: $primary-color;
+    color: $white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+
+  .btn-secondary {
+    background-color: $secondary-color;
+    color: $black;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+  }
 }

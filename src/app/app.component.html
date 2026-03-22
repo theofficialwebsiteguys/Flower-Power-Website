@@ -1,16 +1,2 @@
 <app-verification (verificationComplete)="onAgeVerified()"></app-verification>
-
-<ng-container *ngIf="!isDashboardRoute">
-    <app-top-bar></app-top-bar>
-    <app-navbar></app-navbar>
-</ng-container>
-
-<main role="main">
-  <router-outlet></router-outlet>
-</main>
-
-<ng-container *ngIf="!isDashboardRoute">
-  <footer role="contentinfo">
-    <app-footer></app-footer>
-  </footer>
-</ng-container>
+<router-outlet></router-outlet>

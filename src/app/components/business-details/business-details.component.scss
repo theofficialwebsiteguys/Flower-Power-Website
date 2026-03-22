@@ -292,3 +292,68 @@
   }
 
 }
+
+
+.business-details {
+  background: #2F4F2F;
+  color: #fff;
+  padding: 80px 5%;
+}
+
+.intro {
+  max-width: 900px;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-family: 'Brush Script MT', cursive;
+}
+
+.locations-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.location-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.location-name {
+  font-size: 1.8rem;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border-radius: 12px;
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .location-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fa-solid{
+  margin-top: auto;
+  margin-bottom: auto;
+}

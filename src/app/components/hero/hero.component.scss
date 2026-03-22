@@ -86,3 +86,32 @@ p {
 .carousel-controls span:hover {
   background: rgba(0, 0, 0, 0.8);
 }
+
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.hero-logo {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+    gap: 10px;
+  }
+
+  .hero-logo {
+    height: 150px;
+  }
+}

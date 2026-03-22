@@ -1,24 +1,23 @@
 <header class="top-bar" role="banner">
-  <div class="info">
-    <span>
-      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-      <a href="https://www.google.com/maps/search/?q=22+West+66th+Street,+New+York,+NY+10023" target="_blank" rel="noopener noreferrer">
-        22 West 66th Street, New York, NY 10023
+  <div class="locations">
+
+    <div class="location">
+      <span class="name">Manhattan</span>
+      <span class="hours">Open until 11 PM</span>
+      <a href="https://maps.app.goo.gl/JgG9MjZAtc1yQ9ZT7" class="address" target="_blank">
+        <i class="fa-solid fa-location-dot"></i> 22 W 66th St, New York, NY 10023
       </a>
-    </span>
-    
-    <span>
-      <i class="fa-solid fa-phone" aria-hidden="true"></i>
-      <a href="tel:6469160491">(646) 916-0491</a>
-    </span>
+    </div>
+
+    <div class="location">
+      <span class="name">Queens</span>
+      <span class="hours">Open until 8 PM</span>
+      <a href="https://maps.app.goo.gl/AFbTU8NPJ4XUNWYCA" class="address" target="_blank">
+        <i class="fa-solid fa-location-dot"></i> 71-10 Grand Ave, Maspeth, NY 11378
+      </a>
+    </div>
+
   </div>
-  <div class="right">
-    <span>
-      <i class="fa-solid fa-clock" aria-hidden="true"></i>
-      <span [ngClass]="isOpen ? 'open' : 'closed'" aria-live="polite">
-        {{ isOpen ? 'Open Now' : 'Closed' }}
-      </span>
-    </span>
-    <button class="shop-now" aria-label="Shop Now" [routerLink]="'/shop'">Shop Now</button>
-  </div>
+
+  <button class="shop-now" [routerLink]="'/shop'">Shop Now</button>
 </header>

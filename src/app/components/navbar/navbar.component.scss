@@ -85,3 +85,36 @@
     }
 
 }
+
+.location-row {
+  display: contents; // desktop = behaves as if it doesn't exist
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+
+    .logo{
+        display: none;
+    }
+  }
+
+  .search-cart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap; // 🔒 KEEP icons on one row
+  }
+
+  .location-row {
+    width: 100%;
+    order: 2; // pushes it below header
+    margin-top: 8px;
+  }
+
+  lib-location-dropdown {
+    width: 100%;
+    display: block;
+  }
+}
+

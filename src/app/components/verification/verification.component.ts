@@ -45,7 +45,7 @@ export class VerificationComponent {
     window.location.href = 'https://www.google.com';
   }
 
-  onLocationChosen(location: any) {
+  onLocationSelected(location: any) {
     localStorage.setItem('isAgeVerified', 'true');
     this.showAgeVerification = false;
     this.showLocationSelection = false;

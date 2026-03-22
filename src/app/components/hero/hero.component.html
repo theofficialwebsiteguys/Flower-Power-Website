@@ -1,20 +1,33 @@
-<section
+<header
   class="hero"
-  role="banner"
   aria-labelledby="hero-title"
   [ngStyle]="{
-    'background-image': 'url(' + (singleImage ? singleImage : banners[currentIndex].image) + ')',
+    'background-image': backgroundImage ? 'url(' + backgroundImage + ')' : 'none',
     'height': heroHeight
   }"
 >
   <div class="overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <h1 id="hero-title">{{ title }}</h1>
+    <h1 id="hero-title" class="hero-title">
+      {{ title }}
+      <img
+        src="assets/logo.png"
+        alt="Flower Power Dispensers"
+        class="hero-logo"
+      />
+    </h1>
+
     <p [innerHTML]="subtitle"></p>
+
     <div class="buttons">
-      <button *ngFor="let btn of buttons" [class]="btn.class" [routerLink]="btn.link">
+      <button
+        *ngFor="let btn of buttons"
+        [class]="btn.class"
+        [routerLink]="btn.link"
+      >
         {{ btn.text }}
       </button>
     </div>
   </div>
-</section>
+
+</header>

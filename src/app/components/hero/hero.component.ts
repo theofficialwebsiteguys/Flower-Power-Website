@@ -12,7 +12,7 @@ import { BannersService } from '../../banners.service';
 })
 export class HeroComponent {
   @Input() singleImage: string | null = null; // Image for static pages
-  @Input() title: string = "Welcome To Flower Power Dispensers"; // Dynamic Title
+  @Input() title: string = " "; // Dynamic Title
   @Input() subtitle: string = "Premium Recreational Cannabis Dispensary.<br>Order now for pickup or FREE delivery today."; // Dynamic Subtitle
   @Input() buttons: { text: string; class: string; link?: string }[] = [
     { text: "Shop", class: "btn-primary", link: "/shop" },
@@ -81,4 +81,17 @@ export class HeroComponent {
       clearInterval(this.intervalId);
     }
   }
+
+  get backgroundImage(): string {
+    if (this.singleImage) {
+      return this.singleImage;
+    }
+
+    if (!this.banners.length) {
+      return ''; // or a default hero image
+    }
+
+    return this.banners[this.currentIndex]?.image ?? '';
+  }
+
 }

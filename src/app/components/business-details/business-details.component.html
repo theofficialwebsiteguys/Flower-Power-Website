@@ -1,83 +1,61 @@
-  <!-- Coming Soon Banner -->
-  <!-- Mobile-Only Banner Text (above image) -->
+<section class="business-details">
 
-
-  <!-- Coming Soon Banner -->
-  <div class="coming-soon-banner with-text">
-    <img src="assets/coming-soon-banner.png" alt="New Maspeth Queens Location Coming Soon">
-    <div class="overlay"></div>
-
-    <!-- Desktop overlay text -->
-    <div class="banner-text banner-text-overlay">
-      <div class="headline">NEW STORE. SECOND LOCATION.</div>
-      <div class="subheadline">Opening in Maspeth, Queens this Fall!</div>
-    </div>
-  </div>
-<section class="dispensary-container" aria-labelledby="business-details-heading">
-  <div class="mobile-banner-announcement">
-    <div class="headline">NEW STORE. SECOND LOCATION.</div>
-    <div class="subheadline">Opening in Maspeth, Queens this Summer!</div>
-  </div>
-
-  <!-- Visually Hidden Heading for Assistive Technologies -->
-  <h2 id="business-details-heading" class="visually-hidden">Business Details</h2>
-  
-  <!-- Info Section -->
-  <div class="info-section">
-    <h2 class="title">Visit or Order From Home</h2>
+  <!-- Intro -->
+  <div class="intro">
+    <h2 class="title">Visit Us or Order From Home</h2>
     <p class="description">
-      Flower Power Dispensers (FPD) is an elegant, inviting and warm cannabis shop located on Manhattan's Upper West Side. 
-      Steps from Central Park, Lincoln Center, and Columbus Circle, FPD is New York City's curator of the best, top-quality legal, tested products for everyone 21 and over. 
-      <br><br>
-      <strong>Contact Us &#64; <a href="tel:6469160491">(646) 916-0491</a></strong>
-    
+      Flower Power Dispensers is a warm, elegant cannabis destination serving New York City.
+      With locations in Manhattan and Queens, we curate top-quality, legal, lab-tested products
+      for everyone 21+ — in-store or delivered.
     </p>
-  
+
     <p class="announcement">
-      <strong>Download our app on iOS and Android and get <span class="highlight">FREE DELIVERY</span></strong>
+      <strong>Download our app on iOS & Android for <span class="highlight">FREE DELIVERY</span></strong>
     </p>
-  
-    <!-- Details Section -->
-    <div class="details-container">
-      <div class="detail-box">
-        <span class="detail-icon">
-          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-        </span>
-        <div class="detail-text">
-          <h3>Hours</h3>
-          <p>Monday to Thursday: <strong>8:00 AM – 10:00 PM</strong></p>
-          <p>Friday: <strong>8:00 AM – 11:00 PM</strong></p>
-          <p>Saturday: <strong>10:00 AM – 11:00 PM</strong></p>
-          <p>Sunday: <strong>11:00 AM – 9:00 PM</strong></p>
-        </div>
-      </div>
-  
-      <div class="detail-box">
-        <span class="detail-icon">
-          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-        </span>
-        <div class="detail-text">
-          <h3>Address</h3>
-          <a href="https://www.google.com/maps/search/?q=22+West+66th+Street,+New+York,+NY+10023" target="_blank" rel="noopener noreferrer">
-            22 West 66th Street, New York, NY 10023
-          </a>
-        </div>
-      </div>
-  
-      <div class="detail-box">
-        <span class="detail-icon">
-          <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
-        </span>
-        <div class="detail-text">
-          <h3>Payment Methods</h3>
-          <p>Cash, Debit card &amp; AeroPay.</p>
-        </div>
-      </div>
-    </div>
   </div>
-  
-  <!-- Map Section -->
-  <div id="mapWrapper" class="map-section" aria-label="Map showing the location of Flower Power Dispensers">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.3550860485566!2d-73.9799152!3d40.772669799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259262632ec69%3A0x9955e395ded03b45!2sFlower%20Power%20Dispensers!5e1!3m2!1sen!2sus!4v1764476124774!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <!-- Locations Grid -->
+  <div class="locations-grid">
+
+    <!-- LOCATION CARD -->
+    <div class="location-card" *ngFor="let location of locations">
+
+      <div class="location-info">
+        <h3 class="location-name">{{ location.name }}</h3>
+
+        <div class="info-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <a [href]="location.mapLink" target="_blank">{{ location.address }}</a>
+        </div>
+
+        <div class="info-row">
+          <i class="fa-solid fa-calendar-days"></i>
+          <div>
+            <p *ngFor="let line of location.hours">{{ line }}</p>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <i class="fa-solid fa-phone"></i>
+          <a [href]="'tel:' + location.phone">{{ location.phoneDisplay }}</a>
+        </div>
+
+        <div class="info-row">
+          <i class="fa-solid fa-credit-card"></i>
+          <p>{{ location.payments }}</p>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-wrapper">
+        <iframe
+          [src]="location.mapEmbed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+
   </div>
 </section>
