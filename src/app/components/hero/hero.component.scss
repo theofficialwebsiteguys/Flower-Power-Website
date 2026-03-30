@@ -1,117 +1,286 @@
+$gold: #f1bb09;
+
+// ── Hero shell ────────────────────────────────────────────────
 .hero {
   position: relative;
-  height: 60vh;
+  min-height: 550px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+  align-items: flex-end;           // content sits at the bottom
+  color: #fff;
   background-size: cover;
   background-position: center;
-  transition: background 1s ease-in-out;
+  background-color: #0a1a10;
   overflow: hidden;
+  transition: background-image 1.4s ease-in-out;
 }
 
+// ── Layered gradient overlay ──────────────────────────────────
+// Deep bottom-left vignette so text is always legible;
+// image shows through cleanly on the right + top
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(5, 14, 9, 0.92) 0%,
+      rgba(5, 14, 9, 0.65) 38%,
+      rgba(5, 14, 9, 0.25) 65%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(5, 14, 9, 0.7) 0%,
+      transparent 55%
+    );
   z-index: 1;
 }
 
+// ── Content block ─────────────────────────────────────────────
 .hero-content {
-  position: absolute;
+  position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 640px;
+  padding: 0 72px 100px;
 }
 
-h1 {
-  font-size: 3rem;
-  font-weight: bold;
+// ── Eyebrow label ─────────────────────────────────────────────
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(241, 187, 9, 0.1);
+  border: 1px solid rgba(241, 187, 9, 0.4);
+  color: $gold;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin: 0;
 }
 
-p {
-  font-size: 1.2rem;
-  margin-top: 10px;
+.eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $gold;
+  flex-shrink: 0;
+  animation: dot-pulse 2.2s ease-in-out infinite;
 }
 
-.buttons {
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.3; transform: scale(0.65); }
+}
+
+// ── Logo mark ─────────────────────────────────────────────────
+.hero-logo {
+  height: 130px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.55));
+}
+
+// ── Headline ──────────────────────────────────────────────────
+.hero-title {
+  font-family: 'Kaushan Script', serif;
+  font-size: 4.6rem;
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.5);
+}
+
+// ── Gold divider rule ─────────────────────────────────────────
+.hero-rule {
+  width: 56px;
+  height: 2px;
+  background: $gold;
+  border-radius: 2px;
+}
+
+// ── Subtitle ──────────────────────────────────────────────────
+.hero-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 440px;
+}
+
+// ── CTA buttons ───────────────────────────────────────────────
+.hero-buttons {
   display: flex;
   gap: 12px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.btn-primary, .btn-secondary {
-  padding: 12px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
 
 .btn-primary {
-  background: #25463d;
-  color: white;
+  background: transparent;
+  color: #fff;
+  padding: 13px 32px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+  }
 }
 
 .btn-secondary {
-  background: #f1bb09;
-  color: white;
+  background: $gold;
+  color: #0d1c10;
+  padding: 13px 32px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: #d9a808;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(241, 187, 9, 0.3);
+  }
 }
 
-.carousel-controls {
+// ── Carousel dots ─────────────────────────────────────────────
+.carousel-dots {
   position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 36px;
+  left: 72px;
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   z-index: 3;
 }
 
-.carousel-controls span {
-  cursor: pointer;
-  font-size: 2rem;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+.dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  user-select: none;
-  transition: background 0.3s;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+
+  &.active {
+    background: $gold;
+    transform: scale(1.5);
+  }
+
+  &:hover { background: rgba(255, 255, 255, 0.6); }
 }
 
-.carousel-controls span:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.hero-title {
+// ── Scroll cue ────────────────────────────────────────────────
+.scroll-cue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-top: 0;
+  animation: cue-float 2s ease-in-out infinite;
 }
 
-.hero-logo {
-  height: 200px;
-  width: auto;
-  object-fit: contain;
+.scroll-arrow {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.45);
+  transform: rotate(45deg);
 }
 
-/* Mobile tuning */
+@keyframes cue-float {
+  0%, 100% { transform: translateX(-50%) translateY(0);  opacity: 0.6; }
+  50%       { transform: translateX(-50%) translateY(6px); opacity: 1;   }
+}
+
+// ── Mobile ────────────────────────────────────────────────────
+// ── Mobile ────────────────────────────────────────────────────
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-    gap: 10px;
+  .hero {
+    min-height: 520px;
+    align-items: center;        // vertically center the content block
+    background-position: center;
   }
 
-  .hero-logo {
-    height: 150px;
+  // Full overlay — content is centered so we need even coverage
+  .overlay {
+    background: rgba(5, 14, 9, 0.72);
   }
+
+  .hero-content {
+    margin: auto;
+    padding: 24px 24px 32px;
+    max-width: 100%;
+    gap: 12px;
+    align-items: center;        // center everything horizontally
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-logo { height: 80px; }
+
+  .hero-title {
+    font-size: 2.4rem;
+    line-height: 1.1;
+  }
+
+  .hero-rule { margin: 0 auto; }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    flex: 1;
+    padding: 13px 16px;
+    font-size: 13px;
+  }
+
+  .carousel-dots {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+  }
+
+  .scroll-cue { display: none; }
 }

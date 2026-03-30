@@ -17,8 +17,7 @@ export class HeroComponent {
   @Input() buttons: { text: string; class: string; link?: string }[] = [
     { text: "Shop", class: "btn-primary", link: "/shop" },
     { text: "Mobile App", class: "btn-secondary", link: "/loyalty"  }
-  ];
-  @Input() heroHeight: string = '60vh'; // Default height for main pages
+  ]; // Default height for main pages
 
   
   // images: string[] = [

@@ -18,8 +18,9 @@ $gray-dark: #757575;
    SAFE GLOBAL UTILITIES
 ========================================= */
 
-body{
+html, body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .no-scroll {

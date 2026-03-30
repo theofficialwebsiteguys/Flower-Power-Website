@@ -2,8 +2,9 @@
   width: 100%;
   overflow: hidden;
   background: #2F4F2F;
-  padding: 15px 0;
-  position: relative;
+  border-bottom: 1px solid rgba(241, 187, 9, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 13px 0;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -11,13 +12,21 @@
 
 .marquee {
   display: flex;
-  gap: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(241, 187, 9, 0.85);
   text-transform: uppercase;
   min-width: 200%;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 28s linear infinite;
+
+  i {
+    color: rgba(241, 187, 9, 0.45);
+    font-size: 12px;
+    margin: 0 20px;
+    vertical-align: middle;
+  }
 }
 
 .marquee.paused {
@@ -26,61 +35,27 @@
 
 .marquee span {
   display: inline-block;
-  padding-right: 50px;
+  padding-right: 0;
   min-width: 100%;
 }
 
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-/* Style for the pause/play control */
-.marquee-control {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.marquee-control:hover {
-  background: rgba(0,0,0,0.9);
-}
-
-.marquee:hover,
-.marquee:focus {
+.marquee:hover {
   animation-play-state: paused;
 }
 
-
-@media (max-width: 768px) {
-  .marquee span:nth-child(2) {
-    display: none;
-  }
-
-  /* Adjust the animation for a single span */
-  .marquee {
-    min-width: 100%;
-    animation: scroll-left-mobile 15s linear infinite;
-  }
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-@keyframes scroll-left-mobile {
-  from {
-    transform: translateX(100%);
+@media (max-width: 768px) {
+  .marquee {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    animation-duration: 22s;
   }
-  to {
-    transform: translateX(-100%);
+
+  .marquee span:last-child {
+    display: none;
   }
 }

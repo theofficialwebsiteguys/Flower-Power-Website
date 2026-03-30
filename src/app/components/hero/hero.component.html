@@ -3,23 +3,35 @@
   aria-labelledby="hero-title"
   [ngStyle]="{
     'background-image': backgroundImage ? 'url(' + backgroundImage + ')' : 'none',
-    'height': heroHeight
   }"
 >
   <div class="overlay" aria-hidden="true"></div>
+
   <div class="hero-content">
-    <h1 id="hero-title" class="hero-title">
-      {{ title }}
-      <img
-        src="assets/logo.png"
-        alt="Flower Power Dispensers"
-        class="hero-logo"
-      />
-    </h1>
+    <!-- Eyebrow -->
+    <p class="hero-eyebrow">
+      <span class="eyebrow-dot" aria-hidden="true"></span>
+      NYC's Premier Cannabis Dispensary
+    </p>
 
-    <p [innerHTML]="subtitle"></p>
+    <!-- Brand logo mark -->
+    <img
+      src="assets/logo.png"
+      alt="Flower Power Dispensers"
+      class="hero-logo"
+    />
 
-    <div class="buttons">
+    <!-- Headline -->
+    <h1 id="hero-title" class="hero-title">{{ title }}</h1>
+
+    <!-- Gold rule -->
+    <div class="hero-rule" aria-hidden="true"></div>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle" [innerHTML]="subtitle"></p>
+
+    <!-- CTAs -->
+    <div class="hero-buttons">
       <button
         *ngFor="let btn of buttons"
         [class]="btn.class"
@@ -30,4 +42,21 @@
     </div>
   </div>
 
+  <!-- Carousel dots -->
+  <div class="carousel-dots" *ngIf="banners.length > 1" role="tablist" aria-label="Carousel slides">
+    <button
+      *ngFor="let banner of banners; let i = index"
+      class="dot"
+      [class.active]="i === currentIndex"
+      (click)="currentIndex = i"
+      role="tab"
+      [attr.aria-selected]="i === currentIndex"
+      [attr.aria-label]="'Slide ' + (i + 1)"
+    ></button>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="scroll-arrow"></span>
+  </div>
 </header>

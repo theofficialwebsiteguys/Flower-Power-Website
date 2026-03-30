@@ -1,28 +1,55 @@
-<nav class="navbar" role="navigation" aria-label="Main Navigation">
-  <div class="logo">
+<nav class="navbar" [class.scrolled]="scrolled" role="navigation" aria-label="Main Navigation">
+
+  <!-- Logo -->
+  <div class="nav-logo">
     <a [routerLink]="'/'">
-      <img src="assets/fpd-logo-naked.png" alt="Flower Power Dispensers Logo">
+      <img src="assets/logo.png" alt="Flower Power Dispensers Logo">
     </a>
   </div>
 
-  <ul class="menu" [ngClass]="{'active': menuOpen}">
-    <li><a [routerLink]="'/shop'" (click)="closeMenu()">Shop Now</a></li>
-    <li><a [routerLink]="'/loyalty'" (click)="closeMenu()">Mobile App</a></li>
-    <li><a [routerLink]="'/events'" (click)="closeMenu()">Events</a></li>
-    <li><a [routerLink]="'/about'" (click)="closeMenu()">About</a></li>
-    <li><a [routerLink]="'/blog'" (click)="closeMenu()">Blog</a></li>
-    <li><a href="https://flower-power-shop.fourthwall.com/" target="_blank" (click)="closeMenu()">Merch Store</a></li>
-    <li><a [routerLink]="'/contact'" (click)="closeMenu()">Contact</a></li>
-  </ul>
+  <!-- Slide drawer (desktop: transparent wrapper; mobile: right-side panel) -->
+  <div class="nav-drawer" [class.open]="menuOpen">
+    <div class="drawer-header">
+      <img src="assets/logo.png" alt="Flower Power Dispensers" class="drawer-logo">
+      <button class="drawer-close" (click)="closeMenu()" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
 
-  <div class="search-cart">
+    <ul class="nav-links">
+      <li><a [routerLink]="'/shop'" routerLinkActive="active" (click)="closeMenu()">Shop</a></li>
+      <li><a [routerLink]="'/loyalty'" routerLinkActive="active" (click)="closeMenu()">Mobile App</a></li>
+      <li><a [routerLink]="'/events'" routerLinkActive="active" (click)="closeMenu()">Events</a></li>
+      <li><a [routerLink]="'/about'" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+      <li><a [routerLink]="'/blog'" routerLinkActive="active" (click)="closeMenu()">Blog</a></li>
+      <li><a href="https://flower-power-shop.fourthwall.com/" target="_blank" (click)="closeMenu()">Merch</a></li>
+      <li><a [routerLink]="'/contact'" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+    </ul>
+
+  </div>
+
+  <!-- Right actions -->
+  <div class="nav-actions">
     <lib-location-dropdown></lib-location-dropdown>
-    <lib-cart-icon></lib-cart-icon>
+    <lib-cart-icon ></lib-cart-icon>
     <lib-auth-nav></lib-auth-nav>
+    <a [routerLink]="'/shop'" class="order-btn" (click)="closeMenu()">Order Now</a>
     <button class="hamburger" (click)="toggleMenu()"
             [attr.aria-label]="menuOpen ? 'Close navigation menu' : 'Open navigation menu'"
             [attr.aria-expanded]="menuOpen">
-      <i class="fas fa-bars" aria-hidden="true"></i>
+      <span [class.open]="menuOpen"></span>
+      <span [class.open]="menuOpen"></span>
+      <span [class.open]="menuOpen"></span>
     </button>
   </div>
+
+  <!-- Mobile-only location bar -->
+  <div class="nav-location-bar" aria-label="Select location">
+    <i class="fas fa-location-dot" aria-hidden="true"></i>
+    <lib-location-dropdown></lib-location-dropdown>
+  </div>
+
+  <!-- Overlay behind mobile drawer -->
+  <div class="nav-overlay" [class.active]="menuOpen" (click)="closeMenu()" aria-hidden="true"></div>
+
 </nav>

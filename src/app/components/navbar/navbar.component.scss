@@ -1,120 +1,323 @@
+// ── Design tokens ────────────────────────────────────────────
+$bg:        rgba(14, 26, 20, 0.94);
+$bg-solid:  #0b1a10;
+$gold:      #f1bb09;
+$text:      #f0ece3;
+$muted:     rgba(240, 236, 227, 0.62);
+$border:    rgba(241, 187, 9, 0.14);
+$drawer-w:  300px;
+
+// ── Host ──────────────────────────────────────────────────────
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+// ── Navbar shell ─────────────────────────────────────────────
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  padding: 12px 20px;
-  background: #ffffff;
-  position: sticky; /* Makes the navbar stick */
-  top: 0; /* Sticks it to the top of the page */
-  z-index: 1000; /* Ensures it stays above other content */
+  height: 70px;
+  padding: 0 36px;
+  background: $bg;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid $border;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &.scrolled {
+    background: $bg-solid;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.55);
+  }
+}
+
+// ── Logo ─────────────────────────────────────────────────────
+.nav-logo a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 46px;
   width: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  display: block;
+  transition: opacity 0.2s;
 
-  a{
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .logo img {
-      width: 100px;
-  }
-
-  .menu {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-      font-size: 22px;
-
-      li {
-          cursor: pointer;
-      }
-  }
-
-  .search-cart {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-  }
-
-  input {
-      padding: 6px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-  }
-
-  .cart {
-      background: none;
-      border: none;
-      font-size: 20px;
-  }
-
-  /* HAMBURGER MENU */
-  .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: black;
-  }
-
-    @media (max-width: 768px) {
-    .menu {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100vw; /* ensures it doesn't overflow */
-        background: #F8F5E4;
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-        display: none;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box; /* ensures padding doesn't cause overflow */
-        overflow-x: hidden;
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-    }
-
+  &:hover { opacity: 0.8; }
 }
 
-.location-row {
-  display: contents; // desktop = behaves as if it doesn't exist
+// ── Desktop nav drawer (transparent wrapper) ──────────────────
+.nav-drawer {
+  display: contents; // slots children directly into the grid
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
+// Hide drawer chrome on desktop
+.drawer-header { display: none; }
 
-    .logo{
-        display: none;
-    }
-  }
+// Mobile location bar — hidden on desktop
+.nav-location-bar { display: none; }
 
-  .search-cart {
+// ── Desktop nav links ─────────────────────────────────────────
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 70px;
+
+  li { height: 100%; display: flex; align-items: center; }
+
+  a {
     display: flex;
     align-items: center;
-    gap: 20px;
-    flex-wrap: nowrap; // 🔒 KEEP icons on one row
-  }
+    height: 100%;
+    padding: 0 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: $muted;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s;
 
-  .location-row {
-    width: 100%;
-    order: 2; // pushes it below header
-    margin-top: 8px;
-  }
+    // Gold sliding underline
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: $gold;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  lib-location-dropdown {
-    width: 100%;
-    display: block;
+    &:hover,
+    &.active {
+      color: $gold;
+
+      &::after { transform: scaleX(1); }
+    }
   }
 }
 
+// ── Right actions zone ────────────────────────────────────────
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+// Gold "Order Now" pill CTA
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  background: $gold;
+  color: #0f1e14;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+
+  &:hover {
+    background: #d9a808;
+    transform: translateY(-1px);
+  }
+}
+
+// ── Animated hamburger ────────────────────────────────────────
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $gold;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: $text;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s,
+                width 0.3s;
+
+    // Animate to X
+    &:nth-child(1).open { transform: translateY(6.5px) rotate(45deg); }
+    &:nth-child(2).open { opacity: 0; width: 0; }
+    &:nth-child(3).open { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+}
+
+// ── Mobile overlay ────────────────────────────────────────────
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 998;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  &.active { display: block; }
+}
+
+// ── Responsive ───────────────────────────────────────────────
+@media (max-width: 960px) {
+  .navbar {
+    padding: 0 20px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 62px auto;
+    height: auto;
+  }
+
+  .nav-actions {
+    justify-self: end;
+    gap: 16px;
+  }
+
+  // Drawer becomes a fixed right-side panel
+  .nav-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: $drawer-w;
+    background: #0a1710;
+    z-index: 999;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0.35s;
+    overflow-y: auto;
+
+    &.open {
+      transform: translateX(0);
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0s linear 0s;
+    }
+  }
+
+  // Drawer header (logo + close)
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+  }
+
+  .drawer-logo {
+    height: 38px;
+    width: auto;
+  }
+
+  .drawer-close {
+    background: none;
+    border: none;
+    color: $muted;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+    transition: color 0.2s;
+
+    &:hover { color: $text; }
+  }
+
+  // Drawer nav links (vertical stack)
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    gap: 0;
+    padding: 12px 0;
+
+    li { height: auto; }
+
+    a {
+      padding: 16px 28px;
+      height: auto;
+      font-size: 15px;
+      color: $muted;
+
+      &::after { display: none; }
+      &:hover,
+      &.active {
+        color: $gold;
+        background: rgba(241, 187, 9, 0.06);
+      }
+    }
+  }
+
+  .hamburger { display: flex; }
+
+  .order-btn { display: none; }
+
+  .nav-logo img { height: 60px; }
+
+  // Hide the location dropdown from nav-actions on mobile — it lives in the bar below
+  .nav-actions lib-location-dropdown {
+    display: none !important;
+  }
+
+  // Full-width location bar below the main nav row
+  .nav-location-bar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    grid-column: 1 / -1;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+    i {
+      color: $gold;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    lib-location-dropdown {
+      flex: 1;
+    }
+  }
+
+  // Tighten remaining icons
+  .nav-actions {
+    gap: 8px;
+  }
+}
